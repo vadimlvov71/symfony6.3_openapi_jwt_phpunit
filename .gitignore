@@ -3,3 +3,4 @@
 /config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
 /vendor/
+/var/

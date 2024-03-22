@@ -14,11 +14,7 @@ class LoginController extends AbstractController
     {
          // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
-        if($error){
-            //echo "ko";
-        }else{
-            //echo "nnoo";
-        }
+        
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
        
@@ -28,14 +24,5 @@ class LoginController extends AbstractController
             'error'         => $error,
         ]);
     }
-    /*
-    #[Route('/task/api/login_check', name: 'app_login_check_api')]
-    public function apiLoginCheck(AuthenticationUtils $authenticationUtils): Response
-    {
-         
-        $data = [];
-        $data["response"] = "aaaa";
-        return $data = json_encode($data);
-    }
-    */
+    
 }
