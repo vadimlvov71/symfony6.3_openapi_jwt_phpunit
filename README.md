@@ -20,7 +20,7 @@
 
 ![изображение](https://github.com/vadimlvov71/symfony6.3_openapi_jwt_phpunit/assets/57807117/4698ea55-304a-4c52-88af-f0b93254039b)
 ##### JWT Json Web Token:
-##### Access is forbiden 401 error
+##### Access is forbidden 401 error
 ![изображение](https://github.com/vadimlvov71/symfony6.3_openapi_jwt_phpunit/assets/57807117/7ffaed26-28ac-479f-b748-2cf093c6c90c)
 
 ###### create Json Web Token
