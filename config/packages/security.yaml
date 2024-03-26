@@ -34,7 +34,9 @@ security:
             pattern:   ^/task/api/
             stateless: true
             jwt: ~
-
+            #entry_point: jwt
+            #refresh_jwt:
+            #    check_path: jwt_refresh
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
@@ -44,8 +46,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/login, roles: PUBLIC_ACCESS }
-        - { path: ^/task/api,       roles: IS_AUTHENTICATED_FULLY }
+        #- { path: ^/login, roles: PUBLIC_ACCESS }
+        #- { path: ^/task/api,       roles: IS_AUTHENTICATED_FULLY }
         #- { path: ^/task, roles: ROLE_ADMIN }
         #- { path: /task/, roles: IS_AUTHENTICATED_FULLY}
         # - { path: ^/admin, roles: ROLE_ADMIN }

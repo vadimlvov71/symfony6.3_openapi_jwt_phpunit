@@ -9,3 +9,9 @@ app.swagger_ui:
 
 api_login_check:
     path: /task/api/login_check
+
+gesdinet_jwt_refresh_token:
+        path:       /task/api/token/refresh
+        controller: gesdinet.jwtrefreshtoken::refresh
+        methods:    POST`
+
