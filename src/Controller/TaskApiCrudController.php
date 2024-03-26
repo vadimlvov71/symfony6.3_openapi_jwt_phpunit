@@ -27,93 +27,9 @@ use App\Service\TasksTree;
 *
  */
 #[Route('/task/api')]
-class TaskApiController extends AbstractController
+class TaskApiCrudController extends AbstractController
 {
-    #[Route('/list/{user_id}', name: 'app_task', methods: ['GET'])]
-    /**
-     * @param Request $request
-     * @param TaskRepository $taskRepository
-     *
-     * @return Response
-     */
-    /*
-    #[Security(name: 'Bearer')]
-    */
-    public function index(Request $request, TaskRepository $taskRepository): Response
-    {
-        $user_id = $request->get('user_id');
-        $criteria = ['user_id' => $user_id];
-        $child_ids = [];
-        $criteria = ['user_id' => $user_id];
-        $tasks = $taskRepository->findBy($criteria);
-        foreach ($tasks as $task) {
-            $criteria = ['parent_id' => $task->getId()];
-            $tasks_child = $taskRepository->findBy($criteria);
-            $temp = [];
-            foreach ($tasks_child as $child) {
-                if ($child->getParentId() == $task->getId()) {
-                    $temp[$child->getId()] = $child;
-                    $child_ids[] = $child->getId();
-                }
-            }
-            $task->setChild($temp);
-        }
-        $i = 0;
-        foreach ($tasks as $task) {
-            if (in_array($task->getId(), $child_ids)) {
-                unset($tasks[$i]);
-            }
-            $i++;
-        }
-        return $this->json($tasks);
-    }
-   
-    #[Route('/{user_id}/priority/{priority}', name: 'app_task_priority', methods: ['GET'])]
-    /**
-     * @param Request $request
-     * @param TaskRepository $taskRepository
-     *
-     * @return Response
-     */
-    public function priority(Request $request, TaskRepository $taskRepository): Response
-    {
-        $user_id = $request->get('user_id');
-        $priority = $request->get('priority');
-        $criteria = ['user_id' => $user_id, 'priority' => $priority];
-        $tasks = $taskRepository->findBy($criteria);
-        return $this->json($tasks);
-    }
-    #[Route('/{user_id}/title/{title}', name: 'app_task_title', methods: ['GET'])]
-    /**
-     *  Filter by Title
-     * @param Request $request
-     * @param TaskRepository $taskRepository
-     *
-     * @return Response
-     */
-    public function title(Request $request, TaskRepository $taskRepository): Response
-    {
-        $user_id = $request->get('user_id');
-        $title = $request->get('title');
-        $tasks = $taskRepository->findByTitle($title, $user_id);
-        //$tasks = gettype($tasks);
-        return $this->json($tasks);
-    }
-    #[Route('/{user_id}/description/{description}', name: 'app_task_description', methods: ['GET'])]
-    /**
-     * Filter by Description
-     * @param Request $request
-     * @param TaskRepository $taskRepository
-     *
-     * @return Response
-     */
-    public function description(Request $request, TaskRepository $taskRepository): Response
-    {
-        $user_id = $request->get('user_id');
-        $description = $request->get('description');
-        $tasks = $taskRepository->findByDescription($description, $user_id);
-        return $this->json($tasks);
-    }
+
     #[Route('', name: 'app_task_api_new', methods: ['GET', 'POST'])]
     /**
      * @param Request $request
@@ -296,45 +212,5 @@ class TaskApiController extends AbstractController
             }
         }
         return $this->json($response);
-    }
-
-    #[Route('/{user_id}/tasks_tree/{id}', name: 'app_task_api_ task_tree', methods: ['GET'])]
-    /**
-     * The tree of a task with nesting tasks
-     * @param Request $request
-     * @param TaskRepository $taskRepository
-     *
-     * @return Response
-     */
-    public function taksTree(Request $request, TasksTree $taskTree): Response
-    {
-        $user_id = $request->get('user_id');
-        $id = $request->get('id');
-        $criteria = ['parent_id' => $id];
-
-        $tasks = $taskTree->loopTasks($criteria, "tree");
-
-        return $this->json($tasks);
-    }
-    #[Route('/{user_id}/priority_by/{priority_sort}/created_by/{created_sort}', name: 'app_sortBy', methods: ['GET'])]
-    /**
-     * @param Request $request
-     * @param TaskRepository $taskRepository
-     *
-     * @return Response
-     */
-    public function sortBy(Request $request, TaskRepository $taskRepository): Response
-    {
-
-        $user_id = $request->get('user_id');
-        $priority_sort = $request->get('priority_sort');
-        $created_sort = $request->get('created_sort');
-        $tasks = $taskRepository->sortBy($user_id, $priority_sort, $created_sort);
-
-        /*echo "____<pre>";
-        print_r($tasks);
-        echo "</pre>";*/
-
-        return $this->json($tasks);
     }
 }

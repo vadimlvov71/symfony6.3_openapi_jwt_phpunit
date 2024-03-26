@@ -56,7 +56,7 @@ nelmio_api_doc:
                         '401':
                             description: An authentication exception occurred.
                     security: []
-            '/task/api/new':
+            '/task/api':
                 post:
                     tags:
                         - CRUD
@@ -91,7 +91,7 @@ nelmio_api_doc:
                                         #type: object
                                         example: ["validate_success","last_insert_id", "insert_success"]
            
-            '/task/api/{user_id}/edit/{id}':
+            '/task/api/{user_id}/{id}':
                 put:
                     tags:
                         - CRUD
@@ -140,7 +140,7 @@ nelmio_api_doc:
                                 application/json:
                                     schema:
                                         example: ["validate_success","update_success"]                  
-            '/task/api/{user_id}/delete/{id}':
+            '/task/api/{user_id}/{id}/':
                 delete:
                     tags:
                         - CRUD
@@ -167,7 +167,7 @@ nelmio_api_doc:
                                 application/json:
                                     schema:
                                         example: ["validate_success","delete_success"]      
-            '/task/api/{user_id}/change_status/{id}/{status}':
+            '/task/api/{user_id}/{id}/{status}':
                 patch:
                     tags:
                         - CRUD
@@ -221,7 +221,7 @@ nelmio_api_doc:
                                 application/json:
                                     schema:
                                         $ref: '#/components/schemas/Example'                               
-            '/task/api/{user_id}/status/{status}':
+            '/task/api/filter/{user_id}/status/{status}':
                 get:
                     tags:
                         - search by a criteria
@@ -250,7 +250,7 @@ nelmio_api_doc:
                                     schema:
                                         $ref: '#/components/schemas/Example' 
 
-            '/task/api/{user_id}/priority/{priority}':
+            '/task/api/filter/{user_id}/priority/{priority}':
                 get:
                     tags:
                         - search by a criteria
@@ -277,7 +277,7 @@ nelmio_api_doc:
                                 application/json:
                                     schema:
                                         $ref: '#/components/schemas/Example' 
-            '/task/api/{user_id}/title/{title}':
+            '/task/api/filter/{user_id}/title/{title}':
                 get:
                     tags:
                         - search by a criteria
@@ -294,7 +294,7 @@ nelmio_api_doc:
                         -
                             name: title
                             in: path
-                            description: 'priority of a task'
+                            description: 'title of a task'
                             required: true
                             schema:
                                 type: string
@@ -306,7 +306,7 @@ nelmio_api_doc:
                                     schema:
                                         $ref: '#/components/schemas/Example' 
                                         
-            '/task/api/{user_id}/description/{description}':
+            '/task/api/filter/{user_id}/description/{description}':
                 get:
                     tags:
                         - search by a criteria
