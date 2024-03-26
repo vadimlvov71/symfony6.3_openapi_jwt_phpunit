@@ -9,6 +9,7 @@ nelmio_api_doc:
                 post:
                     tags:
                         - Json Web Token
+                    summary: login_check violates Rest Api rule 2.2.4. Do not use underscores.
                     description: 'Create a JWT'
                     requestBody:
                         content:
