@@ -17,7 +17,8 @@
 * Mysql
 
 ##### page:
-![изображение](https://github.com/vadimlvov71/symfony6.3_openapi_jwt_phpunit/assets/57807117/ea87091d-8f79-4cdc-b006-057d1ac78896)
+![изображение](https://github.com/vadimlvov71/symfony6.3_openapi_jwt_phpunit/assets/57807117/79f5fbbe-e433-4d5f-b4e2-f669aeb04b92)
+
 
 ##### JWT Json Web Token:
 ##### Access is forbidden 401 error
